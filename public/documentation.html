@@ -7,12 +7,172 @@
     <title>Movie Mayhem</title>
   </head>
   <body>
-    <h1>Movie Mayhem</h1>
-    <p>
+    <h1 style="text-align: center">Movie Mayhem</h1>
+    <br />
+    <h4 style="text-align: center">
       This web application will provide users with access to information about
-      different movies, directors, and genres. Users will be able to sign up,
-      update their personal information, and create a list of their favorite
-      movies.
-    </p>
+      different movies, directors, and genres.<br />
+      Users will be able to sign up, update their personal information, and
+      create a list of their favorite movies.
+    </h4>
+    <br />
+
+    <ul style="max-width: 700px">
+      <li>[1] The URL endpoint is localhost:8080/movies</li>
+      <li>
+        This Request returns a list of all the movies in the API, and the
+        information associated with them.
+      </li>
+      <li>The Method type used is GET.</li>
+      <li>The only query parameter used is /movies</li>
+      <li>There is no data requested.</li>
+      <li>The response data is in JSON format.<br /></li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>[2] The URL endpoint is localhost:8080/movies/(selected title)</li>
+      <li>
+        This Request searches for and returns a particular movie's info
+        according to title. If title is entered incorrectly, or movie doesn't
+        exist, a (400) error will be thrown with message ('no such movie').
+      </li>
+      <li>The Method type used is GET.</li>
+      <li>The query parameters used are /movies/:title</li>
+      <li>There is no data requested.</li>
+      <li>The response data is in JSON format.<br /></li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>
+        [3] The URL endpoint is localhost:8080/movies/genre/(selected genre
+        name)
+      </li>
+      <li>
+        This Request searches for a specific genre (by genre name), and returns
+        info about that genre. If genre is entered incorrectly or genre does not
+        exist, a (400) error will be thrown with message ('no such genre').
+      </li>
+      <li>The Method type used is GET.</li>
+      <li>The query parameters used are /movies/genre/:genreName</li>
+      <li>There is no data requested.</li>
+      <li>The response data is in JSON format.<br /></li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>[4] The URL endpoint is localhost:8080/movies/(director name)</li>
+      <li>
+        This Request searches for a specific director (by director name), and
+        returns information about that director. If director name is entered
+        incorrectly, or director does not exist, a (400) error will be thrown
+        with message ('no such director').
+      </li>
+      <li>The Method type used is GET.</li>
+      <li>The query parameters used are /movies/director/:directorName</li>
+      <li>There is no data requested.</li>
+      <li>The response data is in JSON format.<br /></li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>[5] The URL endpoint is localhost:8080/users</li>
+      <li>
+        This Request allows a new user to register. Once they fill out the
+        requested info, they will be assigned an ID number, and be added to the
+        API. If they don't enter a name, a (400) error will be thrown with
+        message ('users need names').
+      </li>
+      <li>The Method type used is POST.</li>
+      <li>The query parameters used are /users</li>
+      <li>
+        A body of data is requested which must at least include the user's name
+        in JSON format.<br />
+        Example: {"name" : "Jake" "favoriteMovies":[] }
+      </li>
+      <li>
+        The response data is in JSON format. Which returns the users newly
+        created profile with their ID number.<br />
+      </li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>[6] The URL endpoint is localhost:8080/users/(ID number)</li>
+      <li>
+        This Request allows users to update their user name in the user info. If
+        they enter invalid information, a (400) error will be thrown with
+        message ('no such user').
+      </li>
+      <li>The Method type used is PUT.</li>
+      <li>The query parameters used are /users/:id</li>
+      <li>
+        The data requested is in JSON format, and must include the users new
+        name. <br />
+        Example: {"id":1, "name": "Kim Updated", "favorite movies": []}
+      </li>
+      <li>
+        The response data is in JSON format, which returns the users updated
+        name while retaining all other info.<br />
+      </li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>
+        [7] The URL endpoint is localhost:8080/users/(ID number)/(movie title)
+      </li>
+      <li>
+        This request allows users to add their favorite movies to their array.
+        If they enter invalid information, a (400) error will be thrown with
+        message ('no such user').
+      </li>
+      <li>The Method type used is POST.</li>
+      <li>The query parameters used are /users/:id/:movieTitle</li>
+      <li>
+        There is no body of data requested. You simply type in the movie title
+        you wish to add in the URL after your ID number.
+      </li>
+      <li>
+        The response data is in text format, with a message that says,"(movie
+        title) as been added to user (ID)'s array".<br />
+      </li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>
+        [8] The URL endpoint is localhost:8080/users/(ID number)/(movie title)
+      </li>
+      <li>
+        This Request allows users to remove a movie from their array. If they
+        enter invalid information, a (400) error will be thrown with message
+        ('no such user').
+      </li>
+      <li>The Method type used is DELETE.</li>
+      <li>The query parameters used are /users/:id/:movieTitle</li>
+      <li>
+        There is no body of data requested. You simply type in the movie title
+        you wish to delete in the URL after your ID number.
+      </li>
+      <li>
+        The response data is in text format, with a message that says,"(movie
+        title) has been removed from user (ID)'s array".<br />
+      </li>
+    </ul>
+    <br /><br /><br />
+    <ul style="max-width: 700px">
+      <li>[9] The URL endpoint is localhost:8080/users/(ID number)</li>
+      <li>
+        This Request allows a user to delete all their information from the API.
+        If they enter invalid information, a (400) error will be thrown with
+        message ('no such user').
+      </li>
+      <li>The Method type used is DELETE.</li>
+      <li>The query parameters used are /users/:id</li>
+      <li>
+        There is no body of data requested. Simply enter your ID number at the
+        end of the URL.
+      </li>
+      <li>
+        The response data is in Text format, with a message that says, "user (ID
+        number) has been deleted".<br />
+      </li>
+    </ul>
+    <br /><br /><br />
   </body>
 </html>
