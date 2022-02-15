@@ -25,8 +25,15 @@
       </li>
       <li>The Method type used is GET.</li>
       <li>The only query parameter used is /movies</li>
-      <li>There is no data requested.</li>
-      <li>The response data is in JSON format.<br /></li>
+      <li>There is no data requested. URL example: localhost:8080/movies</li>
+      <li>
+        The response data is in JSON format.<br />
+        Example: { "title": "Episode 1: The Phantom Menace", "director": {
+        "name": "George Lucas" }, "released": "1999", "genre": { "name":
+        "Sci-Fi" } }, { "title": "Episode 2: Attack Of The Clones", "director":
+        { "name": "George Lucas" }, "released": "2002", "genre": { "name":
+        "Sci-Fi" } },
+      </li>
     </ul>
     <br /><br /><br />
     <ul style="max-width: 700px">
@@ -38,8 +45,15 @@
       </li>
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/:title</li>
-      <li>There is no data requested.</li>
-      <li>The response data is in JSON format.<br /></li>
+      <li>
+        There is no data requested. URL Example:
+        localhost:8080/movies/Rogue%20One:%20A%20Star%20Wars%20Story
+      </li>
+      <li>
+        The response data is in JSON format.<br />Example: { "title": "Rogue
+        One: A Star Wars Story", "director": { "name": "Gareth Edwards" },
+        "released": "2016", "genre": { "name": "Sci-Fi" } }
+      </li>
     </ul>
     <br /><br /><br />
     <ul style="max-width: 700px">
@@ -54,8 +68,13 @@
       </li>
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/genre/:genreName</li>
-      <li>There is no data requested.</li>
-      <li>The response data is in JSON format.<br /></li>
+      <li>
+        There is no data requested. URL Example:
+        localhost:8080/movies/genre/Sci-Fi
+      </li>
+      <li>
+        The response data is in JSON format.<br />Example: { "name": "Sci-Fi" }
+      </li>
     </ul>
     <br /><br /><br />
     <ul style="max-width: 700px">
@@ -68,8 +87,14 @@
       </li>
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/director/:directorName</li>
-      <li>There is no data requested.</li>
-      <li>The response data is in JSON format.<br /></li>
+      <li>
+        There is no data requested. URL Example:
+        localhost:8080/movies/director/George%20Lucas
+      </li>
+      <li>
+        The response data is in JSON format.<br />Example: { "name": "George
+        Lucas" }
+      </li>
     </ul>
     <br /><br /><br />
     <ul style="max-width: 700px">
@@ -85,11 +110,13 @@
       <li>
         A body of data is requested which must at least include the user's name
         in JSON format.<br />
-        Example: {"name" : "Jake" "favoriteMovies":[] }
+        Example: { "name": "Mary", "favoriteMovies": [] }
       </li>
       <li>
         The response data is in JSON format. Which returns the users newly
         created profile with their ID number.<br />
+        Example: { "name": "Mary", "favoriteMovies": [], "id":
+        "4eee907c-2c73-4098-a3bc-64ead28633da" }
       </li>
     </ul>
     <br /><br /><br />
@@ -109,7 +136,8 @@
       </li>
       <li>
         The response data is in JSON format, which returns the users updated
-        name while retaining all other info.<br />
+        name while retaining all other info.<br />Example: { "id": 1, "name":
+        "Kim updated", "favoriteMovies": [] }
       </li>
     </ul>
     <br /><br /><br />
@@ -126,11 +154,13 @@
       <li>The query parameters used are /users/:id/:movieTitle</li>
       <li>
         There is no body of data requested. You simply type in the movie title
-        you wish to add in the URL after your ID number.
+        you wish to add in the URL after your ID number. URL Example:
+        localhost:8080/users/1/Episode%204:%20A%20New%20Hope
       </li>
       <li>
         The response data is in text format, with a message that says,"(movie
-        title) as been added to user (ID)'s array".<br />
+        title) as been added to user (ID)'s array".<br />Example: Episode 4: A
+        New Hope has been added to user 1's array
       </li>
     </ul>
     <br /><br /><br />
@@ -147,11 +177,13 @@
       <li>The query parameters used are /users/:id/:movieTitle</li>
       <li>
         There is no body of data requested. You simply type in the movie title
-        you wish to delete in the URL after your ID number.
+        you wish to delete in the URL after your ID number. URL Example:
+        localhost:8080/users/1/Episode%204:%20A%20New%20Hope
       </li>
       <li>
         The response data is in text format, with a message that says,"(movie
-        title) has been removed from user (ID)'s array".<br />
+        title) has been removed from user (ID)'s array".<br />Example: Episode
+        4: A New Hope has been removed from user 1's array
       </li>
     </ul>
     <br /><br /><br />
@@ -166,11 +198,12 @@
       <li>The query parameters used are /users/:id</li>
       <li>
         There is no body of data requested. Simply enter your ID number at the
-        end of the URL.
+        end of the URL. URL Example: localhost:8080/users/2
       </li>
       <li>
         The response data is in Text format, with a message that says, "user (ID
         number) has been deleted".<br />
+        Example: user 2 has been deleted
       </li>
     </ul>
     <br /><br /><br />
