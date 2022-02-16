@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Movie Mayhem</title>
+    <style>
+      li {
+        padding-bottom: 10px;
+        padding-top: 5px;
+      }
+      ul {
+        max-width: 1000px;
+        border: 3px solid green;
+      }
+      body {
+        background-color: #eae3c9;
+      }
+    </style>
   </head>
   <body>
     <h1 style="text-align: center">Movie Mayhem</h1>
@@ -17,7 +30,7 @@
     </h4>
     <br />
 
-    <ul style="max-width: 700px">
+    <ul>
       <li>[1] The URL endpoint is localhost:8080/movies</li>
       <li>
         This Request returns a list of all the movies in the API, and the
@@ -28,15 +41,43 @@
       <li>There is no data requested. URL example: localhost:8080/movies</li>
       <li>
         The response data is in JSON format.<br />
-        Example: { "title": "Episode 1: The Phantom Menace", "director": {
-        "name": "George Lucas" }, "released": "1999", "genre": { "name":
-        "Sci-Fi" } }, { "title": "Episode 2: Attack Of The Clones", "director":
-        { "name": "George Lucas" }, "released": "2002", "genre": { "name":
-        "Sci-Fi" } },
+        Example: [ { "title": "Episode 1: The Phantom Menace", "imageUrl":
+        "https://www.themoviedb.org/t/p/original/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
+        "overview": "Anakin Skywalker, a young slave strong with the Force, is
+        discovered on Tatooine by Jedis Qui-Gon Jinn and Obi-Wan Kenobi.
+        Meanwhile, the evil Sith have returned, enacting their plot for revenge
+        against the Jedi.", "director": { "name": "George Lucas", "bio": "George
+        Walton Lucas Jr.[1] (born May 14, 1944) is an American film director,
+        producer, screenwriter, and entrepreneur. Lucas is best known for
+        creating the Star Wars and Indiana Jones franchises and founding
+        Lucasfilm, Lucasfilm Games, and Industrial Light & Magic. He served as
+        chairman of Lucasfilm before selling it to The Walt Disney Company in
+        2012.[2] Lucas is one of history's most financially successful
+        filmmakers and has been nominated for four Academy Awards. His films are
+        among the 100 highest-grossing movies at the North American box office,
+        adjusted for ticket-price inflation.[3] Lucas is considered one of the
+        most significant figures of the 20th-century New Hollywood movement, and
+        a pioneer of the modern blockbuster.", "birthYear": "1944", "deathYear":
+        "" }, "released": "5/19/1999", "genre": { "name": "Sci-Fi",
+        "description": "Science fiction (sometimes shortened to sci-fi or SF) is
+        a genre of speculative fiction which typically deals with imaginative
+        and futuristic concepts such as advanced science and technology, space
+        exploration, time travel, parallel universes, and extraterrestrial life.
+        It has been called the \"literature of ideas\", and it often explores
+        the potential consequences of scientific, social, and technological
+        innovations." } }, { "title": "Episode 2: Attack Of The Clones",
+        "imageUrl":
+        "https://www.themoviedb.org/t/p/original/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
+        "overview": "Following an assassination attempt on Senator Padmé
+        Amidala, Jedi Knights Anakin Skywalker and Obi-Wan Kenobi further
+        investigate the true identity of the Sith, and discover a mysterious
+        plan that was set in motion many years earlier. Anakin and Padme grow
+        closer in their affection for eachother, even though attachment is
+        forbidden for a Jedi",
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>[2] The URL endpoint is localhost:8080/movies/(selected title)</li>
       <li>
         This Request searches for and returns a particular movie's info
@@ -50,13 +91,33 @@
         localhost:8080/movies/Rogue%20One:%20A%20Star%20Wars%20Story
       </li>
       <li>
-        The response data is in JSON format.<br />Example: { "title": "Rogue
-        One: A Star Wars Story", "director": { "name": "Gareth Edwards" },
-        "released": "2016", "genre": { "name": "Sci-Fi" } }
+        The response data is in JSON format.<br />Example:{ "title": "Rogue One:
+        A Star Wars Story", "imageUrl":
+        "https://www.themoviedb.org/t/p/original/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
+        "overview": "Jyn Erso and a rogue band of resistance fighters unite for
+        a mission against The Empire to steal the Death Star plans and bring
+        hope to the galaxy.", "director": { "name": "Gareth Edwards", "bio":
+        "Gareth James Edwards (born 13 July 1975) is a British visual effects
+        artist, screenwriter, film director, cinematographer, production
+        designer, and film producer. He first gained widespread recognition for
+        Monsters (2010), an independent film in which he served as writer,
+        director, cinematographer, and visual effects artist.[1][2] He
+        subsequently directed Godzilla (2014), a reboot[3] of Toho's Godzilla
+        franchise and the first film in Legendary's MonsterVerse, and Rogue One:
+        A Star Wars Story (2016), the first installment of the Star Wars
+        anthology series and an immediate prequel to Star Wars: Episode IV – A
+        New Hope (1977).", "birthYear": "1975", "deathYear": "" }, "released":
+        "12/16/2016", "genre": { "name": "Sci-Fi", "description": "Science
+        fiction (sometimes shortened to sci-fi or SF) is a genre of speculative
+        fiction which typically deals with imaginative and futuristic concepts
+        such as advanced science and technology, space exploration, time travel,
+        parallel universes, and extraterrestrial life. It has been called the
+        \"literature of ideas\", and it often explores the potential
+        consequences of scientific, social, and technological innovations." } }
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>
         [3] The URL endpoint is localhost:8080/movies/genre/(selected genre
         name)
@@ -73,11 +134,18 @@
         localhost:8080/movies/genre/Sci-Fi
       </li>
       <li>
-        The response data is in JSON format.<br />Example: { "name": "Sci-Fi" }
+        The response data is in JSON format.<br />Example: { "name": "Sci-Fi",
+        "description": "Science fiction (sometimes shortened to sci-fi or SF) is
+        a genre of speculative fiction which typically deals with imaginative
+        and futuristic concepts such as advanced science and technology, space
+        exploration, time travel, parallel universes, and extraterrestrial life.
+        It has been called the \"literature of ideas\", and it often explores
+        the potential consequences of scientific, social, and technological
+        innovations." }
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>[4] The URL endpoint is localhost:8080/movies/(director name)</li>
       <li>
         This Request searches for a specific director (by director name), and
@@ -93,11 +161,22 @@
       </li>
       <li>
         The response data is in JSON format.<br />Example: { "name": "George
-        Lucas" }
+        Lucas", "bio": "George Walton Lucas Jr.[1] (born May 14, 1944) is an
+        American film director, producer, screenwriter, and entrepreneur. Lucas
+        is best known for creating the Star Wars and Indiana Jones franchises
+        and founding Lucasfilm, Lucasfilm Games, and Industrial Light & Magic.
+        He served as chairman of Lucasfilm before selling it to The Walt Disney
+        Company in 2012.[2] Lucas is one of history's most financially
+        successful filmmakers and has been nominated for four Academy Awards.
+        His films are among the 100 highest-grossing movies at the North
+        American box office, adjusted for ticket-price inflation.[3] Lucas is
+        considered one of the most significant figures of the 20th-century New
+        Hollywood movement, and a pioneer of the modern blockbuster.",
+        "birthYear": "1944", "deathYear": "" }
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>[5] The URL endpoint is localhost:8080/users</li>
       <li>
         This Request allows a new user to register. Once they fill out the
@@ -110,17 +189,21 @@
       <li>
         A body of data is requested which must at least include the user's name
         in JSON format.<br />
-        Example: { "name": "Mary", "favoriteMovies": [] }
+        Example: { "name": "Mary", "favoriteMovies": "['Episode 1: The Phantom
+        Menace']", "dateOfBirth": "November 5, 1988", "email":
+        "quitecontrary33@gmail.com" }
       </li>
       <li>
         The response data is in JSON format. Which returns the users newly
         created profile with their ID number.<br />
-        Example: { "name": "Mary", "favoriteMovies": [], "id":
-        "4eee907c-2c73-4098-a3bc-64ead28633da" }
+        Example: { "name": "Mary", "favoriteMovies": "['Episode 1: The Phantom
+        Menace']", "dateOfBirth": "November 5, 1988", "email":
+        "quitecontrary33@gmail.com", "id":
+        "415a0e20-54d0-45b4-9ff7-9ce085da69bd" }
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>[6] The URL endpoint is localhost:8080/users/(ID number)</li>
       <li>
         This Request allows users to update their user name in the user info. If
@@ -132,16 +215,19 @@
       <li>
         The data requested is in JSON format, and must include the users new
         name. <br />
-        Example: {"id":1, "name": "Kim Updated", "favorite movies": []}
+        Example:{ "id": 1, "name": "Kim Jones" (updated name entered),
+        "favoriteMovies": [], "dateOfBirth": "January 15, 2001", "email":
+        "kimmyjones@yahoo.com" }
       </li>
       <li>
         The response data is in JSON format, which returns the users updated
-        name while retaining all other info.<br />Example: { "id": 1, "name":
-        "Kim updated", "favoriteMovies": [] }
+        name while retaining all other info.<br />Example:{ "id": 1, "name":
+        "Kim Jones"(updated name returned), "favoriteMovies": [], "dateOfBirth":
+        "January 15, 2001", "email": "kimmyjones@yahoo.com" }
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>
         [7] The URL endpoint is localhost:8080/users/(ID number)/(movie title)
       </li>
@@ -164,7 +250,7 @@
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>
         [8] The URL endpoint is localhost:8080/users/(ID number)/(movie title)
       </li>
@@ -187,7 +273,7 @@
       </li>
     </ul>
     <br /><br /><br />
-    <ul style="max-width: 700px">
+    <ul>
       <li>[9] The URL endpoint is localhost:8080/users/(ID number)</li>
       <li>
         This Request allows a user to delete all their information from the API.
