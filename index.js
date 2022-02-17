@@ -51,6 +51,7 @@ let starWars = [
       deathYear: '',
     },
     released: '5/19/1999',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -70,6 +71,7 @@ let starWars = [
       deathYear: '',
     },
     released: '05/16/2002 ',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -89,6 +91,7 @@ let starWars = [
       deathYear: '',
     },
     released: '5/19/2005',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -108,6 +111,7 @@ let starWars = [
       deathYear: '',
     },
     released: '12/16/2016',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -127,6 +131,7 @@ let starWars = [
       deathYear: '',
     },
     released: '05/25/1977',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -146,6 +151,7 @@ let starWars = [
       deathYear: '2010',
     },
     released: '6/20/1980',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -165,6 +171,7 @@ let starWars = [
       deathYear: '',
     },
     released: '5/25/1983',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -184,6 +191,7 @@ let starWars = [
       deathYear: '',
     },
     released: '12/18/2015',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -203,6 +211,7 @@ let starWars = [
       deathYear: '',
     },
     released: '12/15/2017',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
@@ -222,6 +231,7 @@ let starWars = [
       deathYear: '',
     },
     released: '12/20/2019',
+    isFeatured: 'true',
     genre: {
       name: 'Sci-Fi',
       description:
