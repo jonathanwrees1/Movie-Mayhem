@@ -12,6 +12,7 @@ let users = [
     name: 'Kim',
     favoriteMovies: [],
     dateOfBirth: 'January 15, 2001',
+    userName: 'kimmy15',
     email: 'kimmyjones@yahoo.com',
   },
   {
@@ -19,6 +20,7 @@ let users = [
     name: 'Joe',
     favoriteMovies: ['Rogue One: A Star Wars Story'],
     dateOfBirth: 'October 11, 1992',
+    userName: 'joe2392',
     email: 'joeyouknow23@gmail.com',
   },
   {
@@ -26,6 +28,7 @@ let users = [
     name: 'Mary',
     favoriteMovies: ['Episode 1: The Phantom Menace'],
     dateOfBirth: 'November 5, 1988',
+    userName: 'mary33hh',
     email: 'quitecontrary33@gmail.com',
   },
   {
@@ -33,6 +36,7 @@ let users = [
     name: 'Jackson',
     favoriteMovies: [],
     dateOfBirth: 'March 3, 1995',
+    userName: 'jackson49',
     email: 'notmichael99@yahoo.com',
   },
 ];
@@ -264,7 +268,7 @@ app.put('/users/:id', (req, res) => {
   let user = users.find((user) => user.id == id);
 
   if (user) {
-    user.name = updatedUser.name;
+    user.userName = updatedUser.userName;
     res.status(200).json(user);
   } else {
     res.status(400).send('no such user');
