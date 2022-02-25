@@ -30,7 +30,7 @@ app.post('/users', (req, res) => {
   Users.findOne({ UserName: req.body.UserName })
     .then((user) => {
       if (user) {
-        return req.status(400).send(req.body.UserName + 'already exists');
+        return res.status(400).send(req.body.UserName + ' already exists');
       } else {
         Users.create({
           UserName: req.body.UserName,
@@ -81,7 +81,11 @@ app.get('/movies', (req, res) => {
 app.get('/movies/:Title', (req, res) => {
   Movies.findOne({ Title: req.params.Title })
     .then((movie) => {
-      res.json(movie);
+      if (movie) {
+        res.json(movie);
+      } else {
+        res.status(400).send('Could not find that one!');
+      }
     })
     .catch((err) => {
       console.error(err);
@@ -93,7 +97,11 @@ app.get('/movies/:Title', (req, res) => {
 app.get('/movies/genre/:Name', (req, res) => {
   Movies.findOne({ 'Genre.Name': req.params.Name })
     .then((movie) => {
-      res.json(movie.Genre);
+      if (movie) {
+        res.json(movie.Genre);
+      } else {
+        res.status(400).send('Could not find that one!');
+      }
     })
     .catch((err) => {
       console.error(err);
@@ -105,7 +113,11 @@ app.get('/movies/genre/:Name', (req, res) => {
 app.get('/movies/director/:Name', (req, res) => {
   Movies.findOne({ 'Director.Name': req.params.Name })
     .then((movie) => {
-      res.json(movie.Director);
+      if (movie) {
+        res.json(movie.Director);
+      } else {
+        res.status(400).send('Could not find that one!');
+      }
     })
     .catch((err) => {
       console.error(err);
