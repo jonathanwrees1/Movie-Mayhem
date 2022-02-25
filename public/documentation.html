@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Movie Mayhem</title>
+    <title>Movie Time Mayhem</title>
     <style>
       li {
         padding-bottom: 10px;
@@ -79,7 +79,8 @@
       <li>[2] The URL endpoint is /movies/(selected title)</li>
       <li>
         This Request searches for and returns a particular movie's info
-        according to title.
+        according to title. If the title does not exist in the database, a (400)
+        error will be thrown with the message,"Could not find that one!"
       </li>
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/:Title</li>
@@ -113,7 +114,8 @@
       <li>[3] The URL endpoint is /movies/genre/(genre name)</li>
       <li>
         This Request searches for a specific genre (by genre name), and returns
-        info about that genre.
+        info about that genre. If the genre does not exist in the database, a
+        (400) error will be thrown with the message,"Could not find that one!"
       </li>
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/genre/:Name</li>
@@ -134,7 +136,9 @@
       <li>[4] The URL endpoint is /movies/director/(director name)</li>
       <li>
         This Request searches for a specific director (by director name), and
-        returns information about that director.
+        returns information about that director. If the director does not exist
+        in the database, a (400) error will be thrown with the message,"Could
+        not find that one!"
       </li>
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/director/:Name</li>
@@ -156,7 +160,8 @@
       <li>
         This Request allows a new user to register. Once they fill out the
         requested info, they will be assigned an ID number, and be added to the
-        API.
+        API. If the user entered already exists, a (400) error will be thrown
+        with the message,"(UserName) already exists"
       </li>
       <li>The Method type used is POST.</li>
       <li>The query parameters used are /users</li>
@@ -190,10 +195,11 @@
         "Email": "testemail@gmail.com" "Birthday": "2001-12-13" }
       </li>
       <li>
-        The response data is a JSON object, which returns the users profile.<br />Example:{
-        _id": "6216e1d5d52a9e65c7944bc7" "UserName": "testusername1" "Password":
-        "updatedPassword" "Email": "testemail@gmail.com' "Birthday":
-        "2001-12-13T00:00:00.000z" "FavoriteMovies":[], "_ _v":0 }
+        The response data is a JSON object, which returns the users updated
+        profile.<br />Example:{ _id": "6216e1d5d52a9e65c7944bc7" "UserName":
+        "testusername1" "Password": "updatedPassword" "Email":
+        "testemail@gmail.com' "Birthday": "2001-12-13T00:00:00.000z"
+        "FavoriteMovies":[], "_ _v":0 }
       </li>
     </ul>
     <br /><br /><br />
@@ -246,6 +252,8 @@
       <li>[9] The URL endpoint is /users/(UserName)</li>
       <li>
         This Request allows a user to delete all their information from the API.
+        If a nonexistent UserName is entered, a (400) error will be throw with
+        the message, "(UserName) was not found"
       </li>
       <li>The Method type used is DELETE.</li>
       <li>The query parameters used are /users/:UserName</li>
