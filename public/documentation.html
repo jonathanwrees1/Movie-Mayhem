@@ -41,10 +41,10 @@
       <li>There is no data requested. URL example: localhost:8080/movies</li>
       <li>
         The response data is a JSON object listing all of the movies.<br />
-        Example: [ { "Genre": { "Name": "Sci-Fi", "Description": "Science
-        fiction (sometimes shortened to sci-fi or SF) is a genre of speculative
-        fiction which typically deals with imaginative and futuristic concepts
-        such as advanced science and technology, space exploration, time travel,
+        Example: { "Genre": { "Name": "Sci-Fi", "Description": "Science fiction
+        (sometimes shortened to sci-fi or SF) is a genre of speculative fiction
+        which typically deals with imaginative and futuristic concepts such as
+        advanced science and technology, space exploration, time travel,
         parallel universes, and extraterrestrial life. It has been called the
         \"literature of ideas\", and it often explores the potential
         consequences of scientific, social, and technological innovations." },
@@ -53,25 +53,29 @@
         Lucas is best known for creating the Star Wars and Indiana Jones
         franchises and founding Lucasfilm, Lucasfilm Games, and Industrial Light
         & Magic. He served as chairman of Lucasfilm before selling it to The
-        Walt Disney Company in 2012", "BirthYear": "1944", "DeathYear": "" },
-        "Actors": [], "_id": "62153901db6c04f4bc30c073", "Title": "Star Wars
-        Episode 1: The Phantom Menace", "ImageUrl":
+        Walt Disney Company in 2012", "BirthYear": "1944-01-01T00:00:00.000Z",
+        "DeathYear": null }, "Actors": [], "_id": "62153901db6c04f4bc30c073",
+        "Title": "Star Wars Episode 1: The Phantom Menace", "ImageUrl":
         "https://www.themoviedb.org/t/p/original/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
         "Released": "5/19/1999", "Description": "Anakin Skywalker, a young slave
         strong with the Force, is discovered on Tatooine by Jedis Qui-Gon Jinn
         and Obi-Wan Kenobi. Meanwhile, the evil Sith have returned, enacting
-        their plot for revenge against the Jedi." }, { "Genre": { "Name":
-        "Animated", "Description": "Animation is a method in which pictures are
-        manipulated to appear as moving images. In traditional animation, images
-        are drawn or painted by hand on transparent celluloid sheets to be
-        photographed and exhibited on film." }, "Director": { "Name": "Ted
-        Berman", "Bio": "American film director, animator, and screenwriter,
-        known for his work with Disney, including Bambi, Fantasia, and The Black
-        Cauldron.", "BirthYear": "1919", "DeathYear": "2001" }, "Actors": [],
-        "_id": "62153de9828d293b8524addd", "Title": "The Fox and The Hound",
-        "ImageUrl":
+        their plot for revenge against the Jedi.", "Featured": true }, {
+        "Genre": { "Name": "Animated", "Description": "Animation is a method in
+        which pictures are manipulated to appear as moving images. In
+        traditional animation, images are drawn or painted by hand on
+        transparent celluloid sheets to be photographed and exhibited on film."
+        }, "Director": { "Name": "Ted Berman", "Bio": "American film director,
+        animator, and screenwriter, known for his work with Disney, including
+        Bambi, Fantasia, and The Black Cauldron.", "BirthYear":
+        "1919-01-01T00:00:00.000Z", "DeathYear": "2001-01-01T00:00:00.000Z" },
+        "Actors": [], "_id": "62153de9828d293b8524addd", "Title": "The Fox and
+        The Hound", "ImageUrl":
         "https://www.themoviedb.org/t/p/original/aC3k6XBaYnulGSkK8263ABjU3Md.jpg",
-        "Released": "07/10/1981"...}
+        "Released": "07/10/1981", "Description": "When a little fox named Todd
+        is adopted into a farm family, he quickly becomes friends with a puppy
+        named Copper. Life is full of adventures until Copper is expected to
+        take on his role as a fox- hunting dog", "Featured": true
       </li>
     </ul>
     <br /><br /><br />
@@ -100,13 +104,13 @@
         "Director": { "Name": "Gareth Edwards", "Bio": "Gareth James Edwards is
         a British visual effects artist, screenwriter, film director,
         cinematographer, production designer, and film producer.", "BirthYear":
-        "1975", "DeathYear": "" }, "Actors": [], "_id":
+        "1975-01-01T00:00:00.000Z", "DeathYear": null }, "Actors": [], "_id":
         "62153e60828d293b8524addf", "Title": "Rogue One: A Star Wars Story",
         "ImageUrl":
         "https://www.themoviedb.org/t/p/original/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
         "Released": "12/16/2016", "Description": "Jyn Erso and a rogue band of
         resistance fighters unite for a mission against The Empire to steal the
-        Death Star plans and bring hope to the galaxy." }
+        Death Star plans and bring hope to the galaxy.", "Featured": true }
       </li>
     </ul>
     <br /><br /><br />
@@ -151,7 +155,7 @@
         director.<br />Example: { "Name": "Ted Berman", "Bio": "American film
         director, animator, and screenwriter, known for his work with Disney,
         including Bambi, Fantasia, and The Black Cauldron.", "BirthYear":
-        "1919", "DeathYear": "2001" }
+        "1919-01-01T00:00:00.000Z", "DeathYear": "2001-01-01T00:00:00.000Z" }
       </li>
     </ul>
     <br /><br /><br />
@@ -235,8 +239,8 @@
       <li>The Method type used is DELETE.</li>
       <li>The query parameters used are /users/:UserName/movies/:MovieID</li>
       <li>
-        There is no body of data requested. You simply type in the movie title
-        you wish to delete in the URL after your ID number. URL Example:
+        There is no body of data requested. You simply type in the movie ID
+        number you wish to delete at the end of the URL. URL Example:
         localhost:8080/users/testusername1/movies/62153e25828d293b8524adde
       </li>
       <li>
