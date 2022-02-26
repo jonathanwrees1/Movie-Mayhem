@@ -10,11 +10,12 @@ let movieSchema = mongoose.Schema({
   Director: {
     Name: String,
     Bio: String,
-    BirthYear: Date,
-    DeathYear: Date,
+    BirthYear: String,
+    DeathYear: String,
   },
   Actors: [String],
   ImageUrl: String,
+  Released: Date,
   Featured: Boolean,
 });
 
