@@ -38,7 +38,10 @@
       </li>
       <li>The Method type used is GET.</li>
       <li>The query parameter used is /movies</li>
-      <li>There is no data requested. URL example: localhost:8080/movies</li>
+      <li>
+        There is no data requested, however you must enter your JWT token to be
+        authorized access. URL example: localhost:8080/movies
+      </li>
       <li>
         The response data is an array of objects in JSON format listing all of
         the movies.<br />
@@ -76,7 +79,8 @@
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/:Title</li>
       <li>
-        There is no data requested. URL Example:
+        There is no data requested, however you must enter your JWT token to be
+        authorized access. URL Example:
         localhost:8080/movies/Rogue%20One:%20A%20Star%20Wars%20Story
       </li>
       <li>
@@ -112,8 +116,8 @@
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/genre/:Name</li>
       <li>
-        There is no data requested. URL Example:
-        localhost:8080/movies/genre/Action
+        There is no data requested, however you must enter your JWT token to be
+        authorized access. URL Example: localhost:8080/movies/genre/Action
       </li>
       <li>
         The response data is a JSON object with information about that genre.<br />Example:
@@ -135,7 +139,8 @@
       <li>The Method type used is GET.</li>
       <li>The query parameters used are /movies/director/:Name</li>
       <li>
-        There is no data requested. URL Example:
+        There is no data requested, however you must enter your JWT token to be
+        authorized access. URL Example:
         localhost:8080/movies/director/Ted%20Berman
       </li>
       <li>
@@ -174,7 +179,37 @@
     </ul>
     <br /><br /><br />
     <ul>
-      <li>[6] The URL endpoint is /users/(UserName)</li>
+      <li>[6] The URL endpoint is /users/login</li>
+      <li>
+        This Request allows a user to enter their UserName and Password into the
+        query parameters order to recieve a JWT token. This JWT token will allow
+        them authorization to read data and make changes. If invalid information
+        is entered, a (400) error will be thrown with the message, "Something is
+        not right."
+      </li>
+      <li>The Method type used is POST.</li>
+      <li>The query parameters used are /users/login(UserName and Password)</li>
+      <li>
+        There is no body of data requested, however you must enter your UserName
+        and Password into the query parameters, and they will be added to the
+        end of the URL. URL Example:
+        localhost:8080/login?UserName=jasonm23&Password=runaway99
+      </li>
+      <li>
+        The response data is nested JSON objects which contain all of the user's
+        profile information along with the newly created JWT token.<br />
+        Example: { "user": { "_id": "62154063828d293b8524ade6", "UserName":
+        "jasonm23", "Password": "runaway99", "Email": "jasonm@gmail.com",
+        "Birthday": "1991-05-18T00:00:00.000Z", "FavoriteMovies": [
+        "62153e60828d293b8524addf", "62153ea4828d293b8524ade0",
+        "62153efa828d293b8524ade1", "62153901db6c04f4bc30c073" ] }, "token":
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjE1NDA2MzgyOGQyOTNiODUyNGFkZTYiLCJVc2VyTmFtZSI6Imphc29ubTIzIiwiUGFzc3dvcmQiOiJydW5hd2F5OTkiLCJFbWFpbCI6Imphc29ubUBnbWFpbC5jb20iLCJCaXJ0aGRheSI6IjE5OTEtMDUtMThUMDA6MDA6MDAuMDAwWiIsIkZhdm9yaXRlTW92aWVzIjpbIjYyMTUzZTYwODI4ZDI5M2I4NTI0YWRkZiIsIjYyMTUzZWE0ODI4ZDI5M2I4NTI0YWRlMCIsIjYyMTUzZWZhODI4ZDI5M2I4NTI0YWRlMSIsIjYyMTUzOTAxZGI2YzA0ZjRiYzMwYzA3MyJdLCJpYXQiOjE2NDYwOTUyNjIsImV4cCI6MTY0NjcwMDA2Miwic3ViIjoiamFzb25tMjMifQ.kfunBC4mK8pB3eAYNGMRzkBwsbNR3wN7Ft4Tg1nntsI"
+        }
+      </li>
+    </ul>
+    <br /><br /><br />
+    <ul>
+      <li>[7] The URL endpoint is /users/(UserName)</li>
       <li>
         This Request allows users to update their user info by their UserName.
       </li>
@@ -182,7 +217,8 @@
       <li>The query parameters used are /users/:UserName</li>
       <li>
         The data requested is a JSON object which must contain whatever changes
-        the user wishes to make. <br />
+        the user wishes to make. You must enter your JWT token to be authorized
+        access. <br />
         Example:{"UserName" : "testusername1" "Password": "updatedPassword"
         "Email": "testemail@gmail.com" "Birthday": "2001-12-13" }
       </li>
@@ -196,7 +232,7 @@
     </ul>
     <br /><br /><br />
     <ul>
-      <li>[7] The URL endpoint is /users/(UserName)/movie/(Movie ID number)</li>
+      <li>[8] The URL endpoint is /users/(UserName)/movie/(Movie ID number)</li>
       <li>
         This request allows users to add their favorite movies to their array
         according to MovieID.
@@ -204,8 +240,9 @@
       <li>The Method type used is POST.</li>
       <li>The query parameters used are /users/:UserName/movies/:MovieID</li>
       <li>
-        There is no body of data requested. You simply type in the MovieID you
-        wish to add at the end of the URL. URL Example:
+        There is no body of data requested, however you must enter your JWT
+        token to be authorized access. You simply type in the MovieID you wish
+        to add at the end of the URL. URL Example:
         localhost:8080/users/testusername1/movies/62153e25828d293b8524adde
       </li>
       <li>
@@ -219,7 +256,7 @@
     </ul>
     <br /><br /><br />
     <ul>
-      <li>[8] The URL endpoint is /users/(UserName)/movie/(Movie ID number)</li>
+      <li>[9] The URL endpoint is /users/(UserName)/movie/(Movie ID number)</li>
       <li>
         This request allows users to remove movies from their array according to
         MovieID.
@@ -227,8 +264,9 @@
       <li>The Method type used is DELETE.</li>
       <li>The query parameters used are /users/:UserName/movies/:MovieID</li>
       <li>
-        There is no body of data requested. You simply type in the MovieID
-        number you wish to delete at the end of the URL. URL Example:
+        There is no body of data requested, however you must enter your JWT
+        token to be authorized access. You simply type in the MovieID number you
+        wish to delete at the end of the URL. URL Example:
         localhost:8080/users/testusername1/movies/62153e25828d293b8524adde
       </li>
       <li>
@@ -241,17 +279,18 @@
     </ul>
     <br /><br /><br />
     <ul>
-      <li>[9] The URL endpoint is /users/(UserName)</li>
+      <li>[10] The URL endpoint is /users/(UserName)</li>
       <li>
         This Request allows a user to delete all their information from the API.
-        If a nonexistent UserName is entered, a (400) error will be throw with
+        If a nonexistent UserName is entered, a (400) error will be thrown with
         the message, "(UserName) was not found"
       </li>
       <li>The Method type used is DELETE.</li>
       <li>The query parameters used are /users/:UserName</li>
       <li>
-        There is no body of data requested. Simply enter your UserName at the
-        end of the URL. URL Example: localhost:8080/users/testusername1
+        There is no body of data requested, however you must enter your JWT
+        token to be authorized access. Simply enter your UserName at the end of
+        the URL. URL Example: localhost:8080/users/testusername1
       </li>
       <li>
         The response data is in Text format, with a message that says,
