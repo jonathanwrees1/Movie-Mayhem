@@ -1,14 +1,9 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
+const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 const Movies = Models.Movie;
 const Users = Models.User;
-
-mongoose.connect('mongodb://localhost:27017/movietime_mayhem', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
@@ -17,7 +12,12 @@ const express = require('express'),
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const cors = require('cors');
+
+mongoose.connect('mongodb://localhost:27017/movietime_mayhem', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
 app.use(
@@ -201,22 +201,25 @@ app.get(
 });*/
 
 //UPDATE User Info by username
+
 app.put(
-  '/users/:UserName'[ // Validation logic here for request
-    //you can either use a chain of methods like .not().isEmpty()
-    //which means "opposite of isEmpty" in plain english "is not empty"
-    //or use .isLength({min: 5}) which means
-    //minimum value of 5 characters are only allowed
-    (check('UserName', 'UserName is required').isLength({ min: 5 }),
-    check(
-      'UserName',
-      'UserName contains non alphanumeric characters - not allowed.'
-    ).isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail())
-  ],
+  '/users/:UserName',
 
   (req, res) => {
+    [
+      // Validation logic here for request
+      //you can either use a chain of methods like .not().isEmpty()
+      //which means "opposite of isEmpty" in plain english "is not empty"
+      //or use .isLength({min: 5}) which means
+      //minimum value of 5 characters are only allowed
+      (check('UserName', 'UserName is required').isLength({ min: 5 }),
+      check(
+        'UserName',
+        'UserName contains non alphanumeric characters - not allowed.'
+      ).isAlphanumeric(),
+      check('Password', 'Password is required').not().isEmpty(),
+      check('Email', 'Email does not appear to be valid').isEmail()),
+    ];
     // check the validation object for errors
     let errors = validationResult(req);
 
