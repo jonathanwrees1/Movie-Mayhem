@@ -1,25 +1,33 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-const cors = require('cors');
-const { check, validationResult } = require('express-validator');
+
 const Movies = Models.Movie;
 const Users = Models.User;
+
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
   uuid = require('uuid'),
   morgan = require('morgan');
 
+const { check, validationResult } = require('express-validator');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/movietime_mayhem', {
+mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
+/*mongoose.connect('mongodb://localhost:27017/movietime_mayhem', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});*/
+
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
+const cors = require('cors');
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -36,6 +44,7 @@ app.use(
   })
 );
 let auth = require('./auth')(app);
+
 const passport = require('passport');
 require('./passport');
 
@@ -204,50 +213,47 @@ app.get(
 
 app.put(
   '/users/:UserName',
+  [
+    // Validation logic here for request
+    (check('UserName', 'UserName is required').isLength({ min: 5 }),
+    check(
+      'UserName',
+      'UserName contains non alphanumeric characters - not allowed.'
+    ).isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail()),
+  ],
 
+  //Checking JWT
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    [
-      // Validation logic here for request
-      //you can either use a chain of methods like .not().isEmpty()
-      //which means "opposite of isEmpty" in plain english "is not empty"
-      //or use .isLength({min: 5}) which means
-      //minimum value of 5 characters are only allowed
-      (check('UserName', 'UserName is required').isLength({ min: 5 }),
-      check(
-        'UserName',
-        'UserName contains non alphanumeric characters - not allowed.'
-      ).isAlphanumeric(),
-      check('Password', 'Password is required').not().isEmpty(),
-      check('Email', 'Email does not appear to be valid').isEmail()),
-    ];
     // check the validation object for errors
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-    //Checking JWT
-    passport.authenticate('jwt', { session: false }),
-      Users.findOneAndUpdate(
-        { UserName: req.params.UserName },
-        {
-          $set: {
-            UserName: req.body.UserMame,
-            Password: req.body.Password,
-            Email: req.body.Email,
-            Birthday: req.body.Birthday,
-          },
+
+    Users.findOneAndUpdate(
+      { UserName: req.params.UserName },
+      {
+        $set: {
+          UserName: req.body.UserMame,
+          Password: req.body.Password,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday,
         },
-        { new: true }, //this line makes sure that the doc is returned
-        (err, updatedUser) => {
-          if (err) {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
-          } else {
-            res.json(updatedUser);
-          }
+      },
+      { new: true }, //this line makes sure that the doc is returned
+      (err, updatedUser) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        } else {
+          res.json(updatedUser);
         }
-      );
+      }
+    );
   }
 );
 
