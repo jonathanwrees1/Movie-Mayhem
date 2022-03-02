@@ -384,7 +384,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Uh Oh. That didn't go as planned!");
 });
 // listen for requests
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
 app.listen(port, '0.0.0.0', () => {
   console.log('Listening on Port ' + port);
 });
