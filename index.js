@@ -58,11 +58,7 @@ app.get('/', (req, res) => {
 
 //CREATE new user
 app.post(
-  '/users', // Validation logic here for request
-  //you can either use a chain of methods like .not().isEmpty()
-  //which means "opposite of isEmpty" in plain english "is not empty"
-  //or use .isLength({min: 5}) which means
-  //minimum value of 5 characters are only allowed
+  '/users', //Validation logic
   [
     check('UserName', 'UserName is required').isLength({ min: 5 }),
     check(
@@ -214,14 +210,13 @@ app.get(
 app.put(
   '/users/:UserName',
   [
-    // Validation logic here for request
-    (check('UserName', 'UserName is required').isLength({ min: 5 }),
+    check('UserName', 'UserName is required').isLength({ min: 5 }),
     check(
       'UserName',
       'UserName contains non alphanumeric characters - not allowed.'
     ).isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail()),
+    check('Email', 'Email does not appear to be valid').isEmail(),
   ],
 
   //Checking JWT
@@ -238,7 +233,7 @@ app.put(
       { UserName: req.params.UserName },
       {
         $set: {
-          UserName: req.body.UserMame,
+          UserName: req.body.UserName,
           Password: req.body.Password,
           Email: req.body.Email,
           Birthday: req.body.Birthday,
