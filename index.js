@@ -28,6 +28,7 @@ app.use(cors());
 
 let auth = require('./auth')(app);
 
+//JWT
 const passport = require('passport');
 require('./passport');
 
