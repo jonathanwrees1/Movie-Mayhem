@@ -164,7 +164,7 @@ app.get(
         if (movie) {
           res.json(movie);
         } else {
-          res.status(400).send('Could not find that one!');
+          res.status(404).send('Could not find that one!');
         }
       })
       .catch(handleError);
@@ -181,7 +181,7 @@ app.get(
         if (movie) {
           res.json(movie.Genre);
         } else {
-          res.status(400).send('Could not find that one!');
+          res.status(404).send('Could not find that one!');
         }
       })
       .catch(handleError);
@@ -198,7 +198,7 @@ app.get(
         if (movie) {
           res.json(movie.Director);
         } else {
-          res.status(400).send('Could not find that one!');
+          res.status(404).send('Could not find that one!');
         }
       })
       .catch(handleError);
@@ -259,7 +259,7 @@ app.delete(
     Users.findOneAndRemove({ UserName: req.params.UserName })
       .then((user) => {
         if (!user) {
-          res.status(400).send(req.params.UserName + ' was not found.');
+          res.status(404).send(req.params.UserName + ' was not found.');
         } else {
           res.status(200).send(req.params.UserName + ' was deleted.');
         }
