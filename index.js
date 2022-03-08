@@ -251,7 +251,7 @@ app.delete(
   }
 );
 
-//DELETE  A User by UserName
+//DELETE  A User by their UserName
 app.delete(
   '/users/:UserName',
   passport.authenticate('jwt', { session: false }),
