@@ -136,6 +136,23 @@ app.put(
   }
 );
 
+//DELETE  A User by their UserName
+app.delete(
+  '/users/:UserName',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Users.findOneAndRemove({ UserName: req.params.UserName })
+      .then((user) => {
+        if (!user) {
+          res.status(404).send(req.params.UserName + ' was not found.');
+        } else {
+          res.status(200).send(req.params.UserName + ' was deleted.');
+        }
+      })
+      .catch(handleError);
+  }
+);
+
 const handleError = (err) => {
   console.error(err);
   res.status(500).send('Error: ' + err);
@@ -248,23 +265,6 @@ app.delete(
         }
       }
     );
-  }
-);
-
-//DELETE  A User by their UserName
-app.delete(
-  '/users/:UserName',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    Users.findOneAndRemove({ UserName: req.params.UserName })
-      .then((user) => {
-        if (!user) {
-          res.status(404).send(req.params.UserName + ' was not found.');
-        } else {
-          res.status(200).send(req.params.UserName + ' was deleted.');
-        }
-      })
-      .catch(handleError);
   }
 );
 
