@@ -90,6 +90,22 @@ app.post(
   }
 );
 
+//READ Get a user by username
+app.get(
+  '/users/:UserName',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Users.findOne({ UserName: req.params.UserName })
+      .then((user) => {
+        res.json(user);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      });
+  }
+);
+
 //UPDATE User Info by username
 app.put(
   '/users/:UserName',
@@ -296,15 +312,3 @@ app.listen(port, '0.0.0.0', () => {
 });*/
 
 //Only Admin Accessible
-
-//READ Get a user by username
-/*app.get('/users/:UserName', (req, res) => {
-  Users.findOne({ UserName: req.params.UserName })
-    .then((user) => {
-      res.json(user);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});*/
