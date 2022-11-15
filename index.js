@@ -11,12 +11,7 @@ const express = require('express'),
   morgan = require('morgan');
 
 const cors = require('cors');
-app.use(
-  cors({
-    origin: '*',
-    options: 'GET,PUT,POST,PATCH',
-  })
-);
+app.use(cors());
 
 const { check, validationResult } = require('express-validator');
 
