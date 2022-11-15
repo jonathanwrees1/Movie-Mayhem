@@ -3,15 +3,20 @@ const Models = require('./models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
-var cors = require('cors');
-
-app.use(cors());
 
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
   uuid = require('uuid'),
   morgan = require('morgan');
+
+const cors = require('cors');
+app.use(
+  cors({
+    origin: '*',
+    options: 'GET,PUT,POST,PATCH',
+  })
+);
 
 const { check, validationResult } = require('express-validator');
 
@@ -25,9 +30,6 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
-
-const cors = require('cors');
-app.use(cors());
 
 let auth = require('./auth')(app);
 
