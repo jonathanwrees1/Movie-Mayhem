@@ -3,6 +3,9 @@ const Models = require('./models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
+var cors = require('cors');
+
+app.use(cors());
 
 const express = require('express'),
   app = express(),
